@@ -1,0 +1,363 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Base styles */
+body {
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Hero Section */
+.hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://via.placeholder.com/1200x400?text=Meat+Hero+Image');
+    background-size: cover;
+    background-position: center;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.hero-content h1 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin: 1rem 0;
+}
+
+.hero-button {
+    display: inline-block;
+    background: linear-gradient(45deg, #8B0000, #B22222);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Header and Navigation (Flexbox) */
+header {
+    background-color: #8B0000;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 1rem 0;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.nav-container h1 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #FFD700;
+    transform: scale(1.1);
+}
+
+/* Main Grid Layout (CSS Grid) */
+.main-grid {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 2rem;
+}
+
+/* Products Section (Flexbox) */
+.products h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #8B0000;
+    font-family: 'Roboto', sans-serif;
+}
+
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.product-card {
+    flex: 1 1 250px;
+    max-width: 250px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.5s ease forwards;
+    animation-delay: var(--delay);
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.product-card h3 {
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    font-family: 'Roboto', sans-serif;
+}
+
+.product-card p {
+    padding: 0 0.5rem 0.5rem;
+    color: #666;
+}
+
+.product-card .price {
+    font-weight: bold;
+    color: #8B0000;
+    padding-bottom: 0.5rem;
+}
+
+.product-card button {
+    background-color: #8B0000;
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    width: 100%;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.product-card button:hover {
+    transform: scale(1.03);
+    background-color: #6B0000;
+}
+
+/* Sidebar with Animated Promotions */
+.sidebar {
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.sidebar h3 {
+    color: #8B0000;
+    margin-bottom: 1rem;
+    font-family: 'Roboto', sans-serif;
+}
+
+.promo-banner {
+    position: relative;
+    height: 2rem;
+    overflow: hidden;
+}
+
+.promo-text {
+    display: block;
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    animation: cyclePromos 9s infinite;
+}
+
+.promo-text:nth-child(1) { animation-delay: 0s; }
+.promo-text:nth-child(2) { animation-delay: 3s; }
+.promo-text:nth-child(3) { animation-delay: 6s; }
+
+@keyframes cyclePromos {
+    0% { opacity: 0; transform: translateY(20px); }
+    10% { opacity: 1; transform: translateY(0); }
+    33.33% { opacity: 1; transform: translateY(0); }
+    43.33% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 0; transform: translateY(-20px); }
+}
+
+/* About Section */
+.about {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+    text-align: center;
+}
+
+.about h2 {
+    color: #8B0000;
+    margin-bottom: 1rem;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Contact Section */
+.contact {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+    text-align: center;
+}
+
+.contact h2 {
+    color: #8B0000;
+    margin-bottom: 1rem;
+    font-family: 'Roboto', sans-serif;
+}
+
+.contact form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.contact input,
+.contact textarea {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.contact input:focus,
+.contact textarea:focus {
+    border-color: #8B0000;
+    outline: none;
+}
+
+.contact button {
+    background: linear-gradient(45deg, #8B0000, #B22222);
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+.contact button:hover {
+    transform: scale(1.03);
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1.5rem 0;
+    margin-top: 2rem;
+}
+
+/* Responsive Design: Tablet (max-width: 768px) */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .main-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        order: -1;
+    }
+
+    .product-grid {
+        gap: 1rem;
+    }
+}
+
+/* Responsive Design: Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+    .hero {
+        height: 40vh;
+    }
+
+    .hero-content h1 {
+        font-size: 1.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .nav-container h1 {
+        font-size: 1.2rem;
+    }
+
+    .product-card {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+
+    .products h2,
+    .about h2,
+    .contact h2 {
+        font-size: 1.5rem;
+    }
+
+    .contact form {
+        max-width: 100%;
+    }
+}
